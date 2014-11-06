@@ -17,66 +17,60 @@ public class BlockedAgain{
     public static int getInt(){
         Scanner myScanner;
         myScanner = new Scanner( System.in );
-        int uInput01 = myScanner.nextInt();
-        if(checkInt(uInput01)){
-          if((checkRange(uInput01)) = 5 ){
-            return uInput01;
-          }
+        //int uInput01 = myScanner.nextInt();
+        while(true){
+            if(checkInt(myScanner)){
+                int test = checkRange(myScanner);
+              if(test<0){
+                    System.out.print("Try another number");
+                    continue;//go back to the while loop
+              }
+              else{
+                  return test;
+              }
+            }
         }
     }
     
-    public static boolean checkInt(int a){
+    public static boolean checkInt( Scanner myScanner){
          //int uInput02 = myScanner.nextInt();
-         if(a.hasNextInt()){
+         //myScanner = myScanner.nextInt();
+         if(myScanner.hasNextInt()){
              return true;
          }
          return false;
     }
      
-    public static int checkRange(int b){
-        int returnNum = 0;
-        if(b>=0 && b<=9){
-            returnNum = 5;
+    public static int checkRange(Scanner myScanner){
+        int nextNum = myScanner.nextInt();
+        int returnNum = -1;
+        if(nextNum>=0 && nextNum<=9){
+            return nextNum;
         }
+        
         return returnNum;
         
     }
     
-    public static void allBlocks(int x){
-        block();
+    public static void allBlocks(int x){//makes all of the blocks loops for blockk of szie 1, size 2 etc
+        //int counter01=0;
+        for(int i=0; i<=x;i++){
+            block(i);
+            //counter01 = i;
+        }
         
     }
     
-    public static void block(){
-       for(int i = 1; i<=x;i++){//Organizes the number of groups printed
-                    //System.out.print("   ");
-                    for(int j = 0; j<x;j++){//number of lines in each group
-                        //System.out.print("    ");
-                        line();
-                        for(int k = 0; k < ((2*i)-1); k++){//prints numbers from 1-uInput
-                            System.out.print(i);
-                            //System.out.println("");
-                            
-                        }
-                        System.out.println("");
-                    }
-                    for(int x=0; x<(8-i); x++){
-                        System.out.print(" ");    
-                    }
-                    for(int k = 0; k < ((2*i)-1); k++){
-                            System.out.print("-");
-                            //System.out.println("");
-                    }
-                    System.out.println("");
-                    
-                    //System.out.print(" ");
-                }   
+    public static void block(int a){//makes one block
         
+        for(int j = 0; j<a;j++){//number of lines in each group
+            line(j);
+        }               
     }
     
-    public static void line(){
-        for(int x=0; x<(8-i); x++){//prints spaces
-                            System.out.print(" ");    
+    public static void line(int y){//makes one line
+        for(int x=0; x<(8-y); x++){//prints spaces
+                System.out.print(" ");    
         }
     }
     
